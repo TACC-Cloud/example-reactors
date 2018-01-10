@@ -10,7 +10,9 @@ testing these examples.
 
 ## Deploy
 
-First, edit `DOCKER_HUB_ORG` in `reactor.rc`. Then...
+Change into an example directory. Edit `DOCKER_HUB_ORG` in `reactor.rc` to 
+reflect either your DockerHub username or organization you are authorized 
+to push to. Then, deploy the Reactor. 
 
 ```shell
 hello_world$ abaco deploy

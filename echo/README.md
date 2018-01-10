@@ -4,6 +4,9 @@ This Reactor echos back the message you sent to it
 
 ## Deploy
 
+Edit `DOCKER_HUB_ORG` in `reactor.rc` to reflect either your DockerHub 
+username or organization you are authorized to push to. Then, deploy.
+
 ```shell
 $ cd echo 
 $ abaco deploy
@@ -31,9 +34,24 @@ $ abaco run -m "Testing 123" JPYkAVO0EWe3X
 WBaVm4lZjQeDj
 'Testing 123'
 
-$ abaco logs JPYkAVO0EWe3X
+$ abaco logs JPYkAVO0EWe3X WBaVm4lZjQeDj
 
 Logs for execution WBaVm4lZjQeDj:
-'Testing 123'
+Hello, world
+```
+
+## Test with JSON
+
+
+```
+$ abaco run -m '{"whistles": "Belgian"}' JPYkAVO0EWe3X
+ZVYwAWLvbD3xw
+{
+  "whistles": "Belgian"
+}
+
+$ abaco logs JPYkAVO0EWe3X ZVYwAWLvbD3xw
+Logs for execution ZVYwAWLvbD3xw:
+{'whistles': 'Belgian'}
 ```
 

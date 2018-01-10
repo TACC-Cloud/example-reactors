@@ -10,6 +10,6 @@ REACTOR_NAME=hello_world
 # REACTOR_ALIAS=aka_reactor_demo
 
 # Docker settings
-DOCKER_HUB_ORG=mwvaughn
+DOCKER_HUB_ORG=your_docker_hub_username
 DOCKER_IMAGE_TAG=hello_world
 DOCKER_IMAGE_VERSION=0.1
