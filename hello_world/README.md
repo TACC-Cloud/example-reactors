@@ -4,7 +4,7 @@ Simple Abaco actor that logs the message it was sent
 
 ## Build and deploy
 
-* Customize variables in `reactor.mk`. At minimum, you will need to set your own `DOCKER_HUB_ORG`
+* Customize variables in `reactor.rc`. At minimum, you will need to set your own `DOCKER_HUB_ORG` to either your Docker Hub username or an organization you are authorized to push to.
 * Make sure you have an active Agave API client and associated `access_token`
 * Customize `config.yml` based on the sample. We exlcude config.yml from source control now because it might have sensitive information in it. This will be solved with a combination of secrets escrow in the TACC Cloud and use of one ore more secrets.yml files that are maintained outside the source repo for your reactor. 
 
