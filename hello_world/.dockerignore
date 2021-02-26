@@ -11,3 +11,4 @@ ida_rsa.*
 *.crt
 *.pkcs8
 .docker
+secrets.json
