@@ -2,6 +2,13 @@ ACTOR_ID ?= $(shell head -1 .actorid)
 GITREF=$(shell git rev-parse --short HEAD)
 GITREF_FULL=$(shell git rev-parse HEAD)
 
+# lightweight JSON to env utility, as string
+define JSON_TO_ENV
+import json as j, pipes as p, sys as s;
+[print('{0}={1} export {0};'.format(p.quote(k), p.quote(v))) for k, v in j.load(s.stdin).items()]
+endef
+export JSON_TO_ENV
+
 # ------------------------------------------------------------------------------
 # Sanity checks
 # ------------------------------------------------------------------------------
@@ -46,3 +53,6 @@ secrets.json:
 	if [ ! -f $@ ]; then \
 		echo '{"dont_reveal": "secret_value"}' > $@; \
 	fi
+
+.env: secrets.json | python
+	cat secrets.json | python -c "$${JSON_TO_ENV}" > $@
