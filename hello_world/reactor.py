@@ -19,11 +19,11 @@ def main():
     paths = ['/work/projects']
     avail = {p: os.path.exists(p) for p in paths}
     if all(avail.values()):
+        [r.logger.debug(f"path '{p}' exists") for p in avail]
         r.on_success(f"all checked paths exist")
     else:
         unavail = [p for p in avail if not avail[p]]
         r.on_failure(f"The following paths do not exist: {unavail}")
-
 
 
 if __name__ == '__main__':

@@ -55,4 +55,4 @@ secrets.json:
 	fi
 
 .env: secrets.json | python
-	cat secrets.json | python -c "$${JSON_TO_ENV}" > $@
+	cat $^ | python -c "$${JSON_TO_ENV}" > $@
