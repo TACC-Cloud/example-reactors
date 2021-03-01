@@ -69,17 +69,17 @@ Finished (2740 msec)
 ## Running the Actor
 
 View the newly-created actor:
-```bash
+<pre><code>
 $ tapis actors list
 +---------------+--------------+-------+-----------------------+--------------------------+--------+
 | id            | name         | owner | image                 | lastUpdateTime           | status |
 +---------------+--------------+-------+-----------------------+--------------------------+--------+
 | v7Npq8M8MXJNE | hello_world  | eho   | enho/hello_world:0.1  | 2021-03-01T22:22:16.029Z | READY  |
 +---------------+--------------+-------+-----------------------+--------------------------+--------+
-```
+</pre></code>
 
 Send a message to the actor, returning an execution ID:
-```bash
+<pre><code>
 $ tapis actors submit -m 'my message' -e MY_ENV_VAR=some_value v7Npq8M8MXJNE
 +-------------+---------------+
 | Field       | Value         |
@@ -87,10 +87,10 @@ $ tapis actors submit -m 'my message' -e MY_ENV_VAR=some_value v7Npq8M8MXJNE
 | executionId | ZRgRjy3myQalw |
 | msg         | my message    |
 +-------------+---------------+
-```
+</pre></code>
 
 We can view the status and logs for this execution:
-```bash
+<pre><code>
 $ tapis actors execs list v7Npq8M8MXJNE
 +---------------+----------+
 | executionId   | status   |
@@ -109,11 +109,11 @@ v7Npq8M8MXJNE INFO Here's that value from the config.yml: not_so_secret
 v7Npq8M8MXJNE INFO Using python-reactors version 0.8.0
 v7Npq8M8MXJNE DEBUG path '/work/projects' exists
 v7Npq8M8MXJNE INFO all checked paths exist
-```
+</pre></code>
 Since we don't act on the message in `reactor.py` we just see the contents of `STDOUT`.
 
 Alternatively, submit a message and retrieve the logs in one command:
-```bash
+<pre><code>
 $ tapis actors run -m 'my message' -e MY_ENV_VAR=some_value v7Npq8M8MXJNE
 v7Npq8M8MXJNE INFO Actor received message: my message
 v7Npq8M8MXJNE DEBUG This is a DEBUG message from actor v7Npq8M8MXJNE
@@ -124,7 +124,7 @@ v7Npq8M8MXJNE INFO Here's that value from the config.yml: not_so_secret
 v7Npq8M8MXJNE INFO Using python-reactors version 0.8.0
 v7Npq8M8MXJNE DEBUG path '/work/projects' exists
 v7Npq8M8MXJNE INFO all checked paths exist
-```
+</pre></code>
 
 Please see the [Tapis CLI documentation](https://tapis-cli.readthedocs.io/en/latest/usage/actors.html) for details on the most up-to-date CLI.
 
