@@ -128,4 +128,4 @@ v7Npq8M8MXJNE INFO all checked paths exist
 
 Please see the [Tapis CLI documentation](https://tapis-cli.readthedocs.io/en/latest/usage/actors.html) for details on the most up-to-date CLI.
 
-[1]: https://github.com/TACC-Cloud/tapis-cli
+1: https://github.com/TACC-Cloud/tapis-cli
