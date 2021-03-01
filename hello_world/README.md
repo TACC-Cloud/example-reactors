@@ -13,7 +13,7 @@ $ make tests
 ## Build and Deploy
 
 Build and deploy the actor using the [Tapis CLI][1]:
-````bash
+<pre><code>
 $ tapis actors deploy
 Building enho/hello_world:0.1
 Finished (1177 msec)
@@ -64,7 +64,7 @@ Finished (2740 msec)
 | create | Created Tapis actor v7Npq8M8MXJNE                                                                                   |
 | cache  | Cached actor identifier to disk                                                                                     |
 +--------+---------------------------------------------------------------------------------------------------------------------+
-```
+</pre></code>
 
 ## Running the Actor
 
