@@ -47,7 +47,7 @@ git:
 tests: secrets.json | tapis docker
 	tapis actors deploy
 	sleep 5
-	tapis actors run -m 'my message' -e 'test_context_key=test_context_value' $(ACTOR_ID)
+	tapis actors run -m 'my message' -e 'test_context_key=test_context_value' $$(cat .actorid)
 
 tests-local: .env | docker tapis
 	exit 1
