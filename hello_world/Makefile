@@ -44,10 +44,17 @@ git:
 
 # ------------------------------------------------------------------------------
 
-tests: secrets.json | tapis
+tests: secrets.json | tapis docker
 	tapis actors deploy
 	sleep 5
 	tapis actors run -m 'my message' -e 'test_context_key=test_context_value' $(ACTOR_ID)
+
+tests-local: .env | docker tapis
+	exit 1
+	## TODO: find a less hacky way to retrieve image name and tag
+	tapis actors deploy -R -f json 2>/dev/null | \
+		jq -r '.[].message|select(startswith("Successfully built"))' | \
+		awk '{print $$NF}'
 
 secrets.json:
 	if [ ! -f $@ ]; then \
