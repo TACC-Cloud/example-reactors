@@ -13,8 +13,7 @@ $ make tests
 ## Build and Deploy
 
 Build and deploy the actor using the [Tapis CLI][1]:
-<pre><code>
-$ tapis actors deploy
+<pre><code>$ tapis actors deploy
 Building enho/hello_world:0.1
 Finished (1177 msec)
 Pushing enho/hello_world:0.1
@@ -69,8 +68,7 @@ Finished (2740 msec)
 ## Running the Actor
 
 View the newly-created actor:
-<pre><code>
-$ tapis actors list
+<pre><code>$ tapis actors list
 +---------------+--------------+-------+-----------------------+--------------------------+--------+
 | id            | name         | owner | image                 | lastUpdateTime           | status |
 +---------------+--------------+-------+-----------------------+--------------------------+--------+
@@ -79,8 +77,7 @@ $ tapis actors list
 </pre></code>
 
 Send a message to the actor, returning an execution ID:
-<pre><code>
-$ tapis actors submit -m 'my message' -e MY_ENV_VAR=some_value v7Npq8M8MXJNE
+<pre><code>$ tapis actors submit -m 'my message' -e MY_ENV_VAR=some_value v7Npq8M8MXJNE
 +-------------+---------------+
 | Field       | Value         |
 +-------------+---------------+
@@ -90,8 +87,7 @@ $ tapis actors submit -m 'my message' -e MY_ENV_VAR=some_value v7Npq8M8MXJNE
 </pre></code>
 
 We can view the status and logs for this execution:
-<pre><code>
-$ tapis actors execs list v7Npq8M8MXJNE
+<pre><code>$ tapis actors execs list v7Npq8M8MXJNE
 +---------------+----------+
 | executionId   | status   |
 +---------------+----------+
@@ -100,7 +96,7 @@ $ tapis actors execs list v7Npq8M8MXJNE
 
 $ tapis actors execs logs v7Npq8M8MXJNE ZRgRjy3myQalw
 Logs for execution ZRgRjy3myQalw
- v7Npq8M8MXJNE INFO Actor received message: my message
+v7Npq8M8MXJNE INFO Actor received message: my message
 v7Npq8M8MXJNE DEBUG This is a DEBUG message from actor v7Npq8M8MXJNE
 v7Npq8M8MXJNE INFO This is an INFO message from actor v7Npq8M8MXJNE
 v7Npq8M8MXJNE WARNING This is a warning from actor v7Npq8M8MXJNE
@@ -113,8 +109,7 @@ v7Npq8M8MXJNE INFO all checked paths exist
 Since we don't act on the message in `reactor.py` we just see the contents of `STDOUT`.
 
 Alternatively, submit a message and retrieve the logs in one command:
-<pre><code>
-$ tapis actors run -m 'my message' -e MY_ENV_VAR=some_value v7Npq8M8MXJNE
+<pre><code>$ tapis actors run -m 'my message' -e MY_ENV_VAR=some_value v7Npq8M8MXJNE
 v7Npq8M8MXJNE INFO Actor received message: my message
 v7Npq8M8MXJNE DEBUG This is a DEBUG message from actor v7Npq8M8MXJNE
 v7Npq8M8MXJNE INFO This is an INFO message from actor v7Npq8M8MXJNE
@@ -128,4 +123,4 @@ v7Npq8M8MXJNE INFO all checked paths exist
 
 Please see the [Tapis CLI documentation](https://tapis-cli.readthedocs.io/en/latest/usage/actors.html) for details on the most up-to-date CLI.
 
-1: https://github.com/TACC-Cloud/tapis-cli
+[1]: https://github.com/TACC-Cloud/tapis-cli
