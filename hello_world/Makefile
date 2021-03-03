@@ -55,7 +55,7 @@ tests-local: .env | docker tapis
 	@# TODO: find a less hacky way to do this
 	$(eval IMAGE = $(shell tapis actors deploy -R -f json 2>/dev/null | \
 		jq -r '.[].message|select(startswith("Successfully built"))' | \
-		awk '{print $$NF}'))
+		awk '{print $$3}'))
 	docker run --rm -it --env-file $^ -v $(AGAVE_CREDS):/root/.agave $(IMAGE)
 
 secrets.json:
