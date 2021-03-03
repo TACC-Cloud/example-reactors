@@ -13,9 +13,4 @@ ADD reactor.py /
 ADD config.yml /
 ADD schemas /
 
-# uninstall legacy Reactors SDK and install most recent version
-#RUN pip uninstall reactors && \
-    #rm -rf /reactors
-
-RUN pip install ipython requests_futures git+https://github.com/TACC-Cloud/python-reactors.git@develop
 CMD ["python3", "/reactor.py"]
