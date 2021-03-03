@@ -1,5 +1,4 @@
 FROM python:3.6-alpine
-#FROM sd2e/reactors:python3
 RUN apk update && apk upgrade && apk add git
 
 # ephemeral working directory
@@ -12,7 +11,7 @@ ADD requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt
 ADD reactor.py /
 ADD config.yml /
-ADD message.json* /message.jsonschema
+ADD schemas /
 
 # uninstall legacy Reactors SDK and install most recent version
 #RUN pip uninstall reactors && \
