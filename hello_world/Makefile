@@ -1,4 +1,5 @@
 ACTOR_ID ?= $(shell head -1 .actorid)
+AGAVE_CREDS ?= ~/.agave
 GITREF=$(shell git rev-parse --short HEAD)
 GITREF_FULL=$(shell git rev-parse HEAD)
 
@@ -50,11 +51,12 @@ tests: secrets.json | tapis docker
 	tapis actors run -m 'my message' -e 'test_context_key=test_context_value' $$(cat .actorid)
 
 tests-local: .env | docker tapis
-	exit 1
-	## TODO: find a less hacky way to retrieve image name and tag
-	tapis actors deploy -R -f json 2>/dev/null | \
+	# Build image using Tapis CLI and retrieve the image hash
+	@# TODO: find a less hacky way to do this
+	$(eval IMAGE = $(shell tapis actors deploy -R -f json 2>/dev/null | \
 		jq -r '.[].message|select(startswith("Successfully built"))' | \
-		awk '{print $$NF}'
+		awk '{print $$NF}'))
+	docker run --rm -it --env-file $^ -v $(AGAVE_CREDS):/root/.agave $(IMAGE)
 
 secrets.json:
 	if [ ! -f $@ ]; then \
