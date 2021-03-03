@@ -1,11 +1,23 @@
 import os
+import sys
+import pdb
+import traceback
 from reactors.runtime import Reactor
 from reactors.version import version as reactors_version
 
 
 def main():
     r = Reactor()
-    r.validate()
+
+    # validate the message and context against schemas
+    try:
+        r.validate_message(permissive=False)
+    except Exception as err:
+        extype, value, tb = sys.exc_info()
+        traceback.print_exc()
+        pdb.post_mortem(tb)
+        raise
+
     r.logger.info("Actor received message: {}".format(r.context['raw_message']))
     r.logger.debug("This is a DEBUG message from actor {}".format(r.uid))
     r.logger.info("This is an INFO message from actor {}".format(r.uid))
@@ -23,7 +35,7 @@ def main():
         r.on_success(f"all checked paths exist")
     else:
         unavail = [p for p in avail if not avail[p]]
-        r.on_failure(f"The following paths do not exist: {unavail}")
+        r.logger.error(f"The following paths do not exist: {unavail}")
 
 
 if __name__ == '__main__':

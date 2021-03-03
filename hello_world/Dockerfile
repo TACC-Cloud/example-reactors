@@ -11,6 +11,7 @@ ADD requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt
 ADD reactor.py /
 ADD config.yml /
-ADD schemas /
+ADD context_schemas /
+ADD message_schemas /
 
 CMD ["python3", "/reactor.py"]
