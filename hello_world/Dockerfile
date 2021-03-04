@@ -1,8 +1,6 @@
-FROM continuumio/miniconda:4.7.12-alpine
-USER root
-RUN apk update && apk upgrade && apk add git
-ENV PATH="/opt/conda/bin:${PATH}"
-RUN conda install -y python=3.6
+FROM ubuntu:18.04
+RUN apt-get update && apt-get -yq upgrade && \
+    apt-get install -yq git python3 python3-pip
 
 # ephemeral working directory
 ENV SCRATCH=/mnt/ephemeral-01
