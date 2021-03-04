@@ -1,6 +1,7 @@
-FROM ubuntu:18.04
-RUN apt-get update && apt-get -yq upgrade && \
-    apt-get install -yq git python3 python3-pip
+FROM ubuntu:20.04
+RUN apt-get update && \
+    apt-get install -yq git python3 python3-pip && \
+    apt-get -yq upgrade
 
 # ephemeral working directory
 ENV SCRATCH=/mnt/ephemeral-01
