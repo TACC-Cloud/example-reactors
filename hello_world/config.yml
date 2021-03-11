@@ -4,4 +4,3 @@ debug: false
 logs:
   level: DEBUG
   token: ~
-do_reveal: not_so_secret

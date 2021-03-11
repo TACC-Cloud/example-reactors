@@ -1,10 +1,11 @@
-FROM python:3.7-alpine
-RUN apk update && apk upgrade && apk add git
+FROM sd2e/reactors:python3
 
 # ephemeral working directory
 ENV SCRATCH=/mnt/ephemeral-01
 WORKDIR ${SCRATCH}
 RUN chmod a+rwx ${SCRATCH} && chmod g+rwxs ${SCRATCH}
+
+RUN rm -rf reactor/
 
 # add reactor assets from repo
 ADD requirements.txt /tmp/requirements.txt
