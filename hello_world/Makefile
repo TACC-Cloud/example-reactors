@@ -56,7 +56,8 @@ tests-local: .env | docker tapis
 	$(eval IMAGE = $(shell tapis actors deploy -R -f json 2>/dev/null | \
 		jq -r '.[].message|select(startswith("Successfully built"))' | \
 		awk '{print $$3}'))
-	docker run --rm -it --env-file $^ -v $(AGAVE_CREDS):/root/.agave $(IMAGE)
+	docker run --rm -it --env-file $^ -v $(AGAVE_CREDS):/root/.agave $(IMAGE) \
+		python3 -m reactors.cli usage
 
 secrets.json:
 	if [ ! -f $@ ]; then \

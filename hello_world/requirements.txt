@@ -1,2 +1,1 @@
-git+https://github.com/TACC-Cloud/python-reactors.git@develop-eho
-requests_futures
+git+https://github.com/TACC-Cloud/python-reactors.git@main
