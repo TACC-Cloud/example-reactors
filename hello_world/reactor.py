@@ -22,7 +22,7 @@ def main():
     r.logger.debug("This is a DEBUG message from actor {}".format(r.uid))
     r.logger.info("This is an INFO message from actor {}".format(r.uid))
     r.logger.warning("This is a warning from actor {}".format(r.uid))
-    r.logger.info("Here's that secret value: {}".format(r.context.dont_reveal))
+    r.logger.info("Here's that secret value: {}".format(r.context.get('dont_reveal')))
     r.logger.info("Here's that value from the config.yml: {}".format(
         r.settings.do_reveal))
     r.logger.info(f"Using python-reactors version {reactors_version}")
